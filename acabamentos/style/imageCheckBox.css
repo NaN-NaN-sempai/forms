@@ -94,7 +94,8 @@
     margin: auto;
     pointer-events: none;
     position: relative;
-    padding-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
     border-radius: 5px;
