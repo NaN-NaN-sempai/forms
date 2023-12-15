@@ -7,15 +7,15 @@ var elasticosList = [
         favorite: false
     },
     {
-        name: "Lilás, Vermelho, Verde Claro, Verde Escuro",
-        sendValue: "Lilás, Vermelho, Verde Claro, Verde Escuro",
+        name: "Coloridos: <br> Lilás, Vermelho, Verde",
+        sendValue: "Colorido",
         price: 12.5,
         img: "./assets/Images/adicionais/elastico/elastico.jpg",
         favorite: false
     },
     {
         name: "Com Glitter: <br> Rosa, Azul Claro, Dourado",
-        sendValue: "Com Glitter: Rosa, Azul Claro, Dourado",
+        sendValue: "Com Glitter",
         price: 14,
         img: "./assets/Images/adicionais/elastico/elasticoComGlitter.gif",
         favorite: true

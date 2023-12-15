@@ -15,9 +15,9 @@ var bolsoList = [
     },
     {
         name: "Os Dois (Temos que usar um arame diferente)",
-        sendValue: "Fotos + Bolso",
+        sendValue: "Bolso + Fotos",
         price: 14,
-        img: "./assets/Images/adicionais/bolso/bolsoEFoto.jpg",
+        img: "./assets/Images/adicionais/bolso/bolsoEFoto.png",
         favorite: false
     }
 ];
