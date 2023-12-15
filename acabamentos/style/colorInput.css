@@ -1,0 +1,99 @@
+.inputColorContainer {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+
+.inputColor{
+    background: var(--mainColor);
+    border: solid 3px var(--secondColor);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 25px;
+    box-shadow: 0 0 0 var(--secondColor);
+    transition: box-shadow .2s;
+}
+
+.inputColor:hover {
+    box-shadow: 0 0 10px 2px var(--secondColor);
+}
+
+.inputColor .info{
+    padding-bottom: 3px;
+    padding-top: 0px;
+    padding-left: 3px;
+    padding-right: 3px;
+    cursor: pointer;
+    user-select: none;
+    color: var(--mainDark);
+}
+
+.inputColor .name{
+    font-size: 15px;
+    max-width: 110px;
+    text-transform: uppercase;
+    user-select: all;
+    overflow-wrap: break-word;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+.inputColor h2{
+    font-weight: normal;
+    font-size: 17px;
+}
+
+.inputColor hr {
+    border-width: 3px;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 23px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+}
+
+.inputColor .outputColor {
+    margin-top: 5px;
+    user-select: all;
+    text-transform: uppercase;
+    position: absolute;
+    bottom: 0;
+}
+
+.inputColor input[type="color"] {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 85px;
+    padding: 0;
+    width: 120px;
+    border-bottom: 3px solid var(--secondColor);
+}
+
+::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+::-webkit-color-swatch{
+    border-radius: 0;
+}
+
+::-moz-color-swatch,
+::-moz-focus-inner{
+    border: none;
+}
+
+::-moz-focus-inner{
+    padding: 0;
+}

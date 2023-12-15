@@ -1,0 +1,11 @@
+:root {    
+    --bgColor: #0f1016;
+    --mainColor: #1c1e27;
+    --secondColor: #d14f0e;
+    --secondColorLighter: #eb6c2c;
+    --mainDark: #d14f0e;
+    --secondDark: #77300d;
+    --mandatory: #d93025;
+    --error: var(--mandatory);
+    --success: green;
+}

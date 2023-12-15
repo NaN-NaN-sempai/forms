@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Icone do Site -->
+    <link rel="icon" type="image/x-icon" href="../assets/icons/icone.ico">
+
+    <title>Seletor de Cores | Inovar Personalização</title>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../colors.css">
+    <link rel="stylesheet" href="../style/main.css">
+    <link rel="stylesheet" href="../style/scrollBar.css">
+    <link rel="stylesheet" href="../style/radio.css">
+    <link rel="stylesheet" href="../style/imageCheckBox.css">
+    <link rel="stylesheet" href="../style/colorInput.css">
+    <link rel="stylesheet" href="../style/dateInput.css">
+
+    
+    <!-- Icones Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+
+    <style>
+        .mainContainer .shareColors{
+            border: 3px solid var(--secondColor);
+            color: var(--mainDark);
+            background: var(--mainColor);
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            align-items: center;
+            cursor: pointer;
+            margin: auto;
+            font-size: 17px;
+            margin-top: 10px;
+        }
+        .mainContainer .shareColors.success {
+            color: var(--mainColor);
+            background: var(--success);
+        }
+        .mainContainer .shareColors.success i {
+            color: var(--mainColor);
+        }
+        .mainContainer .shareColors.error {
+            color: var(--mainColor);
+            background: var(--error);
+        }
+        .mainContainer .shareColors.error i {
+            color: var(--mainColor);
+        }
+        .mainContainer .shareColors i {
+            padding-left: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+
+<body>
+    
+    <header>
+        <a href="">
+            <object class="logo" data="../assets/svg/logo.svg"></object>
+        </a>
+        <h1>Inovar Personalização</h1>
+    </header>
+
+    <div class="mainContainer">
+        <div id="inputColorsCapa" class="inputDiv">
+            <h3>Seletor de Cores</h3><br>
+
+            <span class="title">Insira quais cores você gosta.</span>
+            <br>
+            <span>Toque no espaço acima dos nomes para escolher uma cor:</span>
+            <br><br>
+            
+            <button class="shareColors">Compartilhar Cores <i class="fa fa-share-alt-square" aria-hidden="true"></i></button>
+
+            <br><br>
+
+            <div class="inputColorContainer">
+                
+                <div class="inputColor">
+                    <input type="color" id="inputId-1" value="#FFFFFF">
+                    <label for="inputId-1">
+                        <div class="info">
+                            <h2>Cor:</h2>
+                            <h1 class="name">Insira</h1>
+                            <hr>
+                            <h2 class="outputColor"></h2>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="inputColor">
+                    <input type="color" id="inputId-2" value="#FF7575">
+                    <label for="inputId-2">
+                        <div class="info">
+                            <h2>Cor:</h2>
+                            <h1 class="name">Insira</h1>
+                            <hr>
+                            <h2 class="outputColor"></h2>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="inputColor">
+                    <input type="color" id="inputId-3" value="#8B6EF2">
+                    <label for="inputId-3">
+                        <div class="info">
+                            <h2>Cor:</h2>
+                            <h1 class="name">Insira</h1>
+                            <hr>
+                            <h2 class="outputColor"></h2>
+                        </div>
+                    </label>
+                </div>
+                
+                <div class="inputColor">
+                    <input type="color" id="inputId-4" value="#5BEC92">
+                    <label for="inputId-4">
+                        <div class="info">
+                            <h2>Cor:</h2>
+                            <h1 class="name">Insira</h1>
+                            <hr>
+                            <h2 class="outputColor"></h2>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="inputColor">
+                    <input type="color" id="inputId-5" value="#A7CF30">
+                    <label for="inputId-5">
+                        <div class="info">
+                            <h2>Cor:</h2>
+                            <h1 class="name">Insira</h1>
+                            <hr>
+                            <h2 class="outputColor"></h2>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="inputColor">
+                    <input type="color" id="inputId-6" value="#AB1AE0">
+                    <label for="inputId-6">
+                        <div class="info">
+                            <h2>Cor:</h2>
+                            <h1 class="name">Insira</h1>
+                            <hr>
+                            <h2 class="outputColor"></h2>
+                        </div>
+                    </label>
+                </div>
+
+            </div>
+
+            <p class="sideNote">Design baseado nos <a href="https://www.pantone.com.br/loja/pantone-lifestyle/livros-e-papelaria/pantone-postcards" target="_blank">Postcards da Pantone®</a></p>
+
+            <br>
+        </div>
+    </div>
+    <input type="text" style="display: none" id="colorListOutput">
+</body>
+
+<!-- get colors from url -->
+<script>
+    
+    var params = document.location.href.replace(document.location.origin+document.location.pathname, "");
+
+    if(params[0] == "#"){
+        var param = params.split("=")[1]?.split("&")[0];
+
+        if(params.includes("colors")){
+            var colors = param.split(",");
+
+            colors.forEach((e, i) => {
+                var inputEl = document.querySelector("#inputId-"+(i+1));
+
+                if(!inputEl) return;
+
+                inputEl.value = "#"+e;
+            })
+        }
+    }
+</script>
+
+<script src="../scripts/nameThatColor.js"></script>
+
+<script>
+    var preventThrottlingCounter = 0, preventThrottlingMax = 50;
+    setInterval(() => preventThrottlingCounter = 0, 1000);
+
+    var inputList = document.querySelectorAll(".inputColor");
+    inputList.forEach(e => {
+        // show input colors values
+        var input = e.querySelector("input");
+        var output = e.querySelector(".outputColor");
+        var name = e.querySelector(".name");
+
+        output.innerHTML = input.value;
+        name.innerHTML = nameThatColor(input.value).name;
+
+        e.addEventListener("input", () => {
+            output.innerHTML = input.value;
+            name.innerHTML = nameThatColor(input.value).name;
+        });
+
+    });
+
+    // captalize first letter of each word 
+    String.prototype.toTitleCase = function (){
+        return this.toLowerCase().split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
+    };
+
+    /* button display copied */
+    var copiedInterval;
+    var button = document.querySelector(".shareColors");
+    button.addEventListener("click", () => {
+        var listText = Array.from(inputList).map(m => m.querySelector("input").value.toUpperCase().replace("#","")).join(",");
+        var nameListText = Array.from(inputList).map(m => m.querySelector(".name").innerText.toTitleCase()).join(", ");
+
+        var urlText = document.location.href.split("#")[0];
+
+        var colorListOutput = document.querySelector("#colorListOutput");
+        var shareText = colorListOutput.value = urlText + "#colors=" + listText + "&preventEdit";
+        
+        var defaultButtonText = `Compartilhar Cores <i class="fa fa-share-alt-square" aria-hidden="true"></i>`;
+        
+        if(navigator.share) {
+            navigator.share({
+                title: "Minhas Cores: " + nameListText + " | Seletor de Cores | Inovar Personalização",
+                text: "Seletor de Cores | Inovar Personalização\n\nMinhas Cores:\n\n" + nameListText + "\n\n",
+                url: shareText,
+            })
+            .then(() => {
+                button.innerHTML = `Compartilhado <i class="fa fa-thumbs-up" aria-hidden="true"></i>`;
+                button.classList.add("success");
+
+                clearInterval(copiedInterval);
+                copiedInterval = setTimeout(() => {
+                    button.innerHTML = defaultButtonText;
+                    button.classList.remove("success");
+                }, 1500);
+            })
+            .catch((error) => console.log('Erro ao compartilhar:\n' + error));
+
+        } else {
+            colorListOutput.select();
+            colorListOutput.setSelectionRange(0, colorListOutput.value.length);
+            if(navigator.clipboard){
+                navigator.clipboard
+                    .writeText(shareText)
+                    .then(() => {
+                        button.innerHTML = `Link Copiado <i class="fa fa-thumbs-up" aria-hidden="true"></i>`;
+                        button.classList.add("success");
+
+                        clearInterval(copiedInterval);
+                        copiedInterval = setTimeout(() => {
+                            button.innerHTML = defaultButtonText;
+                            button.classList.remove("success");
+                        }, 1500);
+                    })
+                    .catch((err) => {
+                        console.log(err);
+
+                        button.innerHTML = `Ocorreu um erro <i class="fa fa-exclamation" aria-hidden="true"></i>`;
+                        button.classList.add("error");
+
+                        clearInterval(copiedInterval);
+                        copiedInterval = setTimeout(() => {
+                            button.innerHTML = defaultButtonText;
+                            button.classList.remove("error");
+                        }, 1500);
+                    });
+            } else {
+                alert("Seu navegador não suporta copiar a função de copiar.");
+            }
+        }
+    })
+</script>
+
+</html>
