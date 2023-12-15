@@ -281,12 +281,12 @@
             }
         }
 
-        setupLine("Total", totalValue, total);
+        if(output.length-1)
+            setupLine("Total", totalValue, total);
 
-        console.log("sendTo: ", getNumber());
         console.log(output.join("\n\n"));
 
-        //sendWhatsapp(output.join("\n\n"))
+        sendWhatsapp(output.join("\n\n"))
     }
 
     document.querySelectorAll(".formSection").forEach(f => {
