@@ -1,6 +1,6 @@
 var adicionaisList = [
     {
-        name: "Luva Protetora (protege a capa)",
+        name: "Luva Protetora <br> (protege a capa)",
         sendValue: "Luva protetora",
         price: 12,
         img: "./assets/Images/adicionais/luvaProtetora.jpg",
