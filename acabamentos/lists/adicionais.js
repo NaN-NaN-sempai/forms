@@ -20,7 +20,7 @@ var adicionaisList = [
         }
     },
     {
-        name: "Pingente Luxo:<br>Pink, Bege, Preto, Branco, Amarelo, Rosê, Lilás, ...",
+        name: "Pingente Luxo:<br>Pink, Bege, Preto, Branco, Amarelo, ...",
         sendValue: "Pingente Luxo",
         price: 9,
         img: "./assets/Images/adicionais/pingenteLuxo.png",
