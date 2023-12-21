@@ -7,18 +7,30 @@ var adicionaisList = [
         favorite: false
     },
     {
-        name: "Pingente",
+        name: "Pingente:<br>Verde, Roxo, Amarelo, Rosa, Cinza, Azul",
         sendValue: "Pingente",
         price: 3,
-        img: "./assets/Images/adicionais/pingente.jpg",
-        favorite: false
+        img: "./assets/Images/adicionais/pingente.png",
+        favorite: false,
+        callback: (el) => {
+            el.querySelector("input").addEventListener("input", function () {
+                toggleInput("#pingente", this.checked);
+            })
+            toggleInput("#pingente", el.querySelector("input").checked);
+        }
     },
     {
-        name: "Pingente Luxo",
+        name: "Pingente Luxo:<br>Pink, Bege, Preto, Branco, Amarelo, Rosê, Lilás, ...",
         sendValue: "Pingente Luxo",
         price: 9,
-        img: "./assets/Images/adicionais/pingenteLuxo.jpeg",
-        favorite: false
+        img: "./assets/Images/adicionais/pingenteLuxo.png",
+        favorite: false,
+        callback: (el) => {
+            el.querySelector("input").addEventListener("input", function () {
+                toggleInput("#pingenteLuxo", this.checked);
+            })
+            toggleInput("#pingenteLuxo", el.querySelector("input").checked);
+        }
     },
     {
         name: "Abas Divisórias Adesivas",

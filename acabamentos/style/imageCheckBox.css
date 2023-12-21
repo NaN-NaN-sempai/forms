@@ -10,13 +10,18 @@
 .imageCheckBoxContainer {
     height: 200px;
     width: 200px;
-    background: color-mix(in srgb, var(--mainColor), white 5%);
+    --_lighterMainColor: color-mix(in srgb, var(--mainColor), white 5%);
+    background: var(--_lighterMainColor);
     box-shadow: 0 0 10px var(--bgColor);
     border-radius: 8px;
     position: relative;
     cursor: pointer;
     overflow: hidden;
     transition: box-shadow 1s;
+}
+.imageCheckBoxWrapper.minified .imageCheckBoxContainer  {
+    height: 200px;
+    width: 120px; 
 }
 
 .imageCheckBoxContainer.selected {
@@ -53,6 +58,9 @@
 /* only one */
 .imageCheckBoxWrapper.selectOnlyOne
 .imageCheckBoxContainer input[type="checkbox"]:after {
+    background: var(--_lighterMainColor);
+    padding: 4px;
+    border-radius: 50%;
     content: "\f111";
 }
 .imageCheckBoxWrapper.selectOnlyOne
@@ -133,6 +141,10 @@
 @media screen and (min-width: 950px) {
     .imageCheckBoxWrapper {
         grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    .imageCheckBoxWrapper.minified {
+        grid-template-columns: repeat(6, 1fr);
         gap: 10px;
     }
     .imageCheckBoxContainer {
@@ -148,6 +160,10 @@
     .imageCheckBoxWrapper {
         grid-template-columns: repeat(2, 1fr);
         gap: 50px;
+    }
+    .imageCheckBoxWrapper.minified {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
     }
     .imageCheckBoxContainer img {
         height: 50%;
@@ -169,6 +185,10 @@
     .imageCheckBoxWrapper {
         grid-template-columns: repeat(1, 1fr);
         gap: 50px;
+    }
+    .imageCheckBoxWrapper.minified {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .imageCheckBoxContainer {

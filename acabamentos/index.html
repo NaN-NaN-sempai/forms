@@ -95,11 +95,38 @@
                 <span>As opções com <span class="favorite"></span> são as favoritas dos nossos clientes!</span>
 
                 
-                <div id="elastico" class="imageCheckBoxWrapper selectOnlyOne additionals"></div>
+                <div id="elasticos" class="imageCheckBoxWrapper selectOnlyOne additionals"></div>
                 
-                <br>
-                <br>
-                <span class="title"> Caso escolha uma opção, lembre de informar a cor do elástico para o designer! </span>
+            </div>
+            <div class="inputDiv" id="elasticoPeB">                
+                <div>                    
+                    <h3>Cor do Elástico</h3><br>
+                    <sup class="mandatory"></sup> <br>
+                    <span class="title">Selecione a cor que você quer para o Elástico:</span>
+
+                    
+                    <div id="elastico" class="imageCheckBoxWrapper selectOnlyOne minified"></div>
+                </div>
+            </div>
+            <div class="inputDiv" id="elasticoColorido">                
+                <div>                    
+                    <h3>Cor do Elástico</h3><br>
+                    <sup class="mandatory"></sup> <br>
+                    <span class="title">Selecione a cor que você quer para o Elástico:</span>
+
+                    
+                    <div id="elastico-colorido" class="imageCheckBoxWrapper selectOnlyOne minified"></div>
+                </div>
+            </div>
+            <div class="inputDiv" id="elasticoGlitter">                
+                <div>                    
+                    <h3>Cor do Elástico com Glitter</h3><br>
+                    <sup class="mandatory"></sup> <br>
+                    <span class="title">Selecione a cor que você quer para o Elástico com Glitter:</span>
+
+                    
+                    <div id="elastico-glitter" class="imageCheckBoxWrapper selectOnlyOne minified"></div>
+                </div>
             </div>
 
 
@@ -113,9 +140,27 @@
                 
                 <div id="adicionais" class="imageCheckBoxWrapper additionals"></div>
                 
-                <br>
-                <br>
-                <span class="title"> Caso escolha a opção "Pingente", lembre de informar a cor para o designer! </span>
+            </div> 
+
+            <div class="inputDiv" id="pingente">                
+                <div>                    
+                    <h3>Cor do Pingente</h3><br>
+                    <sup class="mandatory"></sup> <br>
+                    <span class="title">Selecione a cor que você quer para o Pingente:</span>
+
+                    
+                    <div id="pingentes" class="imageCheckBoxWrapper selectOnlyOne minified"></div>
+                </div>
+            </div>
+            <div class="inputDiv" id="pingenteLuxo">                
+                <div>                    
+                    <h3>Cor do Pingente Luxo</h3><br>
+                    <sup class="mandatory"></sup> <br>
+                    <span class="title">Selecione a cor que você quer para o Pingente Luxo:</span>
+
+                    
+                    <div id="pingentes-Luxo" class="imageCheckBoxWrapper selectOnlyOne minified"></div>
+                </div>
             </div>
 
         </div>
@@ -157,6 +202,17 @@
         } else {
             return defaultNumber;
         }
+    }
+
+    const toggleInput = (selector, bool) => {
+        document.querySelector(selector).style.display = bool? "block": "none";
+        [...document.querySelectorAll(selector + " input")].forEach(input => {
+            if(!bool && !input.name.includes("_ignore")){
+                input.name += "_ignore";
+            } else {
+                input.name = input.name.replace("_ignore", "")
+            } 
+        });
     }
 
     const insertImageCheckboxValues = (selector, insertList) => {
@@ -220,9 +276,11 @@
                         
                     labelSelector.append(img, name, hr?hr:"", price?price:"");
                 label.append(labelSelector);
-            imageCheckBoxContainer.append(input, hidden, label);
+            imageCheckBoxContainer.append(input, hidden?hidden:"", label);
 
             insertEl.append(imageCheckBoxContainer);
+
+            if(a.callback) a.callback(imageCheckBoxContainer);
         });
     }
 
@@ -230,11 +288,12 @@
         evt.preventDefault();
 
         let data = new FormData(evt.target);
-        let formObject = Object.fromEntries(data);
+        //let formObject = Object.fromEntries(data); 
 
 
         var object = {};
         data.forEach(function(value, key){
+            if(key.includes("_ignore")) return;
             if(object[key])
                 if(!Array.isArray(object[key]))
                     object[key] = [object[key], value];
@@ -243,6 +302,7 @@
             else
                 object[key] = value;
         });
+        console.log(object);
         
 
         const setupPrice = (n) => {
@@ -258,6 +318,7 @@
             window.open(linkWhatsApp, '_blank');
         }
         const setupLine = (key, sum, value) => {
+            if(sum == "ignore") return output.push(`*${capitalize(key)}*:\n${'`'+value.join(" / ")+'`'}`);
             output.push(`*${capitalize(key)}*: ${setupPrice(sum)}\n${'`'+value.join(" / ")+'`'}`);
         }
 
@@ -279,25 +340,46 @@
                 totalValue += parseFloat(sum);
 
                 setupLine(key, parseFloat(sum), value);
+            } else if(!key.includes("_price")) {
+                let value = [object[key]];
+                total = total.concat(value);
+                setupLine(key, "ignore", value);
             }
         }
+
+        total = total.filter(e => ![
+            "Pingente",
+            "Pingente Luxo",
+            "Elástico Preto ou Branco",
+            "Elástico Colorido",
+            "Elástico com Glitter",
+        ].includes(e));
 
         if(output.length-1)
             setupLine("Total", totalValue, total);
 
-        console.log(output.join("\n\n"));
+        output.unshift(output.at(-1));
+        output.pop();        
 
-        sendWhatsapp(output.join("\n\n"))
+        let outputText = "*Formulário de Acabamentos e Adicionais:*\n\n" + output.join("\n\n")
+        console.log(outputText);
+
+        //sendWhatsapp(outputText);
     }
 
     document.querySelectorAll(".formSection").forEach(f => {
         f.addEventListener("submit", formOutput);
-    })
+    });
 </script>
 
 <script src="./lists/acabamentos.js"></script>
 <script src="./lists/paginaDestaque.js"></script>
+<script src="./lists/elasticoPeb.js"></script>
+<script src="./lists/elasticoColorido.js"></script>
+<script src="./lists/elasticoGlitter.js"></script>
 <script src="./lists/elasticos.js"></script>
+<script src="./lists/pingentes.js"></script>
+<script src="./lists/pingentesLuxo.js"></script>
 <script src="./lists/adicionais.js"></script>
 <script src="./scripts/nameThatColor.js"></script>
 
@@ -333,7 +415,8 @@
                 
                 Array.from(document.querySelectorAll("#"+e.parentNode.parentNode.id+" input")).forEach(i => {
                     if(i.id != selected){ 
-                        i.checked = false;
+                        if(i.checked) i.click();
+                        //i.checked = false;
                         i.parentNode.classList.remove("selected");
                     }
                     
