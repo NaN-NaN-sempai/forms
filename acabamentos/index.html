@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="./style/imageCheckBox.css">
     <link rel="stylesheet" href="./style/colorInput.css">
     <link rel="stylesheet" href="./style/dateInput.css">
+    <link rel="stylesheet" href="./style/dayNightSwitch.css">
 
     
     <!-- Icones Font Awesome -->
@@ -40,6 +41,31 @@
             Marque as opções que você deseja e toque no botão do Whatsapp no final da página.
         </p>
         <br>
+    </div>
+        
+    <div class="mainContainer noHeaderLine">
+        <h2 class="title">
+            Modo de Cor
+        </h2>
+        <hr>
+        <br>
+        <div class="day-night-checkbox">
+            <input type="checkbox" id="day-night-checkbox">
+            <label for="day-night-checkbox">
+                <span class="knob"></span>
+            </label>
+        </div>
+
+        <script>
+            const colorModeInput = document.querySelector("#day-night-checkbox");
+
+            if(localStorage.darkmode)
+                colorModeInput.checked = JSON.parse(localStorage.darkmode);
+
+            colorModeInput.addEventListener("input", function() {
+                localStorage.darkmode = this.checked;
+            })
+        </script>
     </div>
 
         

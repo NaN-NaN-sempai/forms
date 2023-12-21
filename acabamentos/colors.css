@@ -9,3 +9,23 @@
     --error: var(--mandatory);
     --success: green;
 }
+
+
+:has(#day-night-checkbox:checked) {    
+    --bgColor: #FFE2B6;
+    --mainColor: #FFD39C;
+    --secondColor: #E9773C;
+    --secondColorLighter: #eb6c2c;
+    --mainDark: #d14f0e;
+    --secondDark: #77300d;
+    --mandatory: #d93025;
+    --error: var(--mandatory);
+    --success: green;
+}
+
+* {
+    --_speed: .2s;
+    transition: 
+        color var(--_speed),
+        background var(--_speed);
+}
