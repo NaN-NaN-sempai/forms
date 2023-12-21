@@ -24,7 +24,7 @@
 }
 
 * {
-    --_speed: .2s;
+    --_speed: .3s;
     transition: 
         color var(--_speed),
         background var(--_speed);

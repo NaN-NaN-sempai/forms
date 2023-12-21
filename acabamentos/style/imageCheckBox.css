@@ -19,6 +19,9 @@
     overflow: hidden;
     transition: box-shadow 1s;
 }
+:has(#day-night-checkbox:checked) .imageCheckBoxContainer {
+    --_lighterMainColor: color-mix(in srgb, var(--mainColor), var(--mainDark) 15%);
+}
 .imageCheckBoxWrapper.minified .imageCheckBoxContainer  {
     height: 200px;
     width: 120px; 
