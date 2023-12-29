@@ -57,12 +57,26 @@
         <script>
             const colorModeInput = document.querySelector("#day-night-checkbox");
 
-            if(localStorage.darkmode)
-                colorModeInput.checked = JSON.parse(localStorage.darkmode);
+            let deviceColorMode;
+            
+            if(window.matchMedia) {
+                deviceColorMode = window.matchMedia('(prefers-color-scheme: dark)');
+            }
+
+            if(!localStorage.darkmode){
+                localStorage.darkmode = window.matchMedia? !deviceColorMode.matches: false;
+            }
+            
+            deviceColorMode?.addEventListener('change', event => {
+                console.log("device color mode changed");
+                localStorage.darkmode = colorModeInput.checked = !event.matches;
+            });
+
+            colorModeInput.checked = JSON.parse(localStorage.darkmode);
 
             colorModeInput.addEventListener("input", function() {
                 localStorage.darkmode = this.checked;
-            })
+            });
         </script>
     </div>
 
